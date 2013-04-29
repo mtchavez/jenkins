@@ -1,4 +1,4 @@
-go-jenkins-hashes
+go-jenkins-hash
 =================
 
 Jenkins hashes in Go
