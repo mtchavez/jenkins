@@ -1,7 +1,7 @@
 Jenkins
 =================
 
-Golang Jenkins hashe
+Golang Jenkins hash
 
 [![Build Status](https://travis-ci.org/mtchavez/go-jenkins-hashes.png?branch=master)](https://travis-ci.org/mtchavez/go-jenkins-hashes)
 
