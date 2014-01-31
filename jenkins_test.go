@@ -48,4 +48,13 @@ var _ = Describe("Jenkins", func() {
 
 	})
 
+	Describe("BlockSize", func() {
+
+		It("is 1", func() {
+			jhash = New()
+			Expect(jhash.BlockSize()).To(Equal(1))
+		})
+
+	})
+
 })
