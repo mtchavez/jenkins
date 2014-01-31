@@ -15,8 +15,13 @@ var _ = Describe("Jenkins", func() {
 
 		It("returns jenkhash", func() {
 			var h *jenkhash
-			hash := New()
-			Expect(hash).To(BeAssignableToTypeOf(h))
+			jhash = New()
+			Expect(jhash).To(BeAssignableToTypeOf(h))
+		})
+
+		It("initializes offset to 0", func() {
+			jhash = New()
+			Expect(jhash.Sum32()).To(Equal(uint32(0)))
 		})
 	})
 
@@ -35,6 +40,20 @@ var _ = Describe("Jenkins", func() {
 		It("has no error", func() {
 			_, err := jhash.Write(key)
 			Expect(err).To(BeNil())
+		})
+
+	})
+
+	Describe("Reset", func() {
+
+		It("sets back to 0", func() {
+			jhash = New()
+			key = []byte("Apple")
+			Expect(jhash.Sum32()).To(Equal(uint32(0)))
+			jhash.Write(key)
+			Expect(jhash.Sum32()).NotTo(Equal(uint32(0)))
+			jhash.Reset()
+			Expect(jhash.Sum32()).To(Equal(uint32(0)))
 		})
 
 	})
