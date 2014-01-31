@@ -8,6 +8,9 @@ import (
 
 var _ = Describe("Jenkins", func() {
 
+	var jhash hash.Hash32
+	var key []byte
+
 	Describe("New", func() {
 
 		It("returns jenkhash", func() {
@@ -18,9 +21,6 @@ var _ = Describe("Jenkins", func() {
 	})
 
 	Describe("Write", func() {
-
-		var jhash hash.Hash32
-		var key []byte
 
 		BeforeEach(func() {
 			jhash = New()
@@ -35,6 +35,15 @@ var _ = Describe("Jenkins", func() {
 		It("has no error", func() {
 			_, err := jhash.Write(key)
 			Expect(err).To(BeNil())
+		})
+
+	})
+
+	Describe("Size", func() {
+
+		It("is 4", func() {
+			jhash = New()
+			Expect(jhash.Size()).To(Equal(4))
 		})
 
 	})
