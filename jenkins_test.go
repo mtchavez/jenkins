@@ -57,4 +57,20 @@ var _ = Describe("Jenkins", func() {
 
 	})
 
+	Describe("Sum32", func() {
+
+		It("defaults to 0", func() {
+			jhash = New()
+			Expect(jhash.Sum32()).To(Equal(uint32(0)))
+		})
+
+		It("sums hash", func() {
+			jhash = New()
+			key = []byte("Apple")
+			jhash.Write(key)
+			Expect(jhash.Sum32()).To(Equal(uint32(884782484)))
+		})
+
+	})
+
 })
