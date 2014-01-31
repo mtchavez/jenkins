@@ -1,11 +1,19 @@
 package jenkins
 
-func Hash(key []byte) uint32 {
+import "hash"
 
-	var hash uint32 = 0
+type jenkhash uint32
+
+func New() hash.Hash32 {
+	var j jenkhash = 0
+	return &j
+}
+
+func (j *jenkhash) Write(key []byte) (int, error) {
+	hash := *j
 
 	for _, b := range key {
-		hash += uint32(b)
+		hash += jenkhash(b)
 		hash += (hash << 10)
 		hash ^= (hash >> 6)
 	}
@@ -14,5 +22,27 @@ func Hash(key []byte) uint32 {
 	hash ^= (hash >> 11)
 	hash += (hash << 15)
 
-	return hash
+	*j = hash
+	return len(key), nil
+}
+
+func (j *jenkhash) Reset() {
+	*j = 0
+}
+
+func (j *jenkhash) Size() int {
+	return 4
+}
+
+func (j *jenkhash) BlockSize() int {
+	return 1
+}
+
+func (j *jenkhash) Sum32() uint32 {
+	return uint32(*j)
+}
+
+func (j *jenkhash) Sum(in []byte) []byte {
+	v := j.Sum32()
+	return append(in, byte(v>>24), byte(v>>16), byte(v>>8), byte(v))
 }
