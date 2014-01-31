@@ -5,9 +5,9 @@ import (
 )
 
 func TestHash(t *testing.T) {
-	result := Hash("Apple")
+	result := Hash([]byte("Apple"))
 	var expected uint32 = 884782484
 	if result != expected {
-		t.Errorf("one_at_a_time expected %v but got %v", expected, result)
+		t.Errorf("Hash expected %v but got %v", expected, result)
 	}
 }

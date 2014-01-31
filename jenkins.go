@@ -1,12 +1,11 @@
 package jenkins
 
-func Hash(key string) uint32 {
+func Hash(key []byte) uint32 {
 
-	var hash, i uint32 = 0, 0
-	runes := []rune(key)
+	var hash uint32 = 0
 
-	for ; i < uint32(len(key)); i++ {
-		hash += uint32(runes[i])
+	for _, b := range key {
+		hash += uint32(b)
 		hash += (hash << 10)
 		hash ^= (hash >> 6)
 	}
