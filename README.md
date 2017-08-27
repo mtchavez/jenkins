@@ -1,9 +1,12 @@
-Jenkins
-=================
+# Jenkins Hash
+
+[![Latest Version](http://img.shields.io/github/release/mtchavez/jenkins.svg?style=flat-square)](https://github.com/mtchavez/jenkins/releases)
+[![Build Status](https://travis-ci.org/mtchavez/jenkins.svg?branch=master)](https://travis-ci.org/mtchavez/jenkins)
+[![Go Documentation](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/mtchavez/jenkins)
+[![Coverage Status](https://coveralls.io/repos/github/mtchavez/jenkins/badge.svg)](https://coveralls.io/github/mtchavez/jenkins)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mtchavez/jenkins)](https://goreportcard.com/report/github.com/mtchavez/jenkins)
 
 Golang Jenkins hash
-
-[![Build Status](https://travis-ci.org/mtchavez/go-jenkins-hashes.png?branch=master)](https://travis-ci.org/mtchavez/go-jenkins-hashes)
 
 ## Install
 
@@ -11,7 +14,7 @@ Golang Jenkins hash
 
 ## Usage
 
-Jenkins follows the [Hash32](http://golang.org/pkg/hash/#Hash32) interface from the Go standard library
+Jenkins conforms to the [Hash32](http://golang.org/pkg/hash/#Hash32) interface from the Go standard library
 
 ```go
 // Create a new hash
@@ -30,7 +33,7 @@ sumbytes := jenkhash.Sum(key)
 
 ## Testing
 
-Uses [Ginkgo](http://onsi.github.io/ginkgo/) for testing.
+Uses [Ginkgo][ginkgo]  and [Gomega][gomega] for testing.
 
 Run via `make test` which will run `go test -cover`
 
@@ -38,8 +41,5 @@ Run via `make test` which will run `go test -cover`
 
 Docs on [godoc](http://godoc.org/github.com/mtchavez/jenkins)
 
-## License
-
-Written by Chavez
-
-Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
+[ginkgo]: https://github.com/onsi/ginkgo
+[gomega]: https://github.com/onsi/gomega
