@@ -4,8 +4,9 @@ import "hash"
 
 type jenkhash uint32
 
+// New returns a new jenkins hash conforming to hash.Hash32 interface
 func New() hash.Hash32 {
-	var j jenkhash = 0
+	var j jenkhash
 	return &j
 }
 
