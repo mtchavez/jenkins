@@ -4,6 +4,11 @@ import "hash"
 
 type jenkhash uint32
 
+const (
+	blockSize = 1
+	hashSize  = 4
+)
+
 // New returns a new jenkins hash conforming to hash.Hash32 interface
 func New() hash.Hash32 {
 	var j jenkhash
@@ -32,11 +37,11 @@ func (j *jenkhash) Reset() {
 }
 
 func (j *jenkhash) Size() int {
-	return 4
+	return hashSize
 }
 
 func (j *jenkhash) BlockSize() int {
-	return 1
+	return blockSize
 }
 
 func (j *jenkhash) Sum32() uint32 {
